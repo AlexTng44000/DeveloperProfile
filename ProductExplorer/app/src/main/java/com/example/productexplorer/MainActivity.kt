@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Card
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +65,13 @@ fun ProductDetailScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+
+        ProductImage(
+            productTitle = product.title,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
+        )
 
         ProductHeader(
             title = product.title,
@@ -133,6 +142,18 @@ fun ProductPriceCard(
             )
         }
     }
+}
+
+@Composable
+fun ProductImage(
+    productTitle: String,
+    modifier: Modifier = Modifier
+) {
+    Image(
+        painter = painterResource(id = android.R.drawable.ic_menu_gallery),
+        contentDescription = "Image du produit $productTitle",
+        modifier = modifier
+    )
 }
 
 
